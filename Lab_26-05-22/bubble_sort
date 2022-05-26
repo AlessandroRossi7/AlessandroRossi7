@@ -1,0 +1,106 @@
+#include <iostream>
+#include <cstdlib> 
+#include <ctime> 
+#include <bits/stdc++.h>  
+using namespace std;
+
+
+void sortedMerge(int a[], int b[], int res[],  
+    int n, int m) 
+{  
+   
+    int i = 0, j = 0, k = 0;  
+    while (i < n) {  
+        res[k] = a[i];
+        k += 1;  
+    }  
+    while (j < m) {  
+        res[k] = b[j];  
+        j += 1;  
+        k += 1;  
+    }  
+  
+    sort(res, res + n + m);  
+}  
+
+
+void generaVettore(int numbers[20]){
+	int N=20;
+	for(int i = 0; i < N; i++){	
+		numbers[i]=rand() % 100;
+		cout<<" "<<numbers[i];
+	}
+}
+
+void bubbleSort(int numbers[20]){
+	int N=20;
+	int i,j,temp;
+	for(j=0;j<N-1;j++){
+	
+		for(i=0;i<N-1;i++)
+		{
+		
+			if(numbers[i]>numbers[i+1])
+			{
+				temp=numbers[i];
+				numbers[i]=numbers[i+1];
+				numbers[i+1]=temp;
+			}
+		}
+	}
+	cout<<"il tuo array ordinato con bubble sort:";
+	for(i=0;i<N;i++)
+		cout<<" "<<numbers[i];
+}
+
+
+
+int main(){
+	int N=20;
+			cout<<"premi invio per generare un array di 20 numeri"<<"\n";
+					cin.get();
+			cout<<"i tuoi numeri :"<<"\n";
+					srand((unsigned)time(0)); 
+					
+	int numbers[N],i,j,temp;
+	generaVettore(numbers);
+
+					cout<<"\n"<<"premi invio per avviare il bubble sort";
+							cin.get();
+	
+	bubbleSort(numbers);
+	cin.get();
+	system("CLS");
+	
+					cout<<"premi invio per generare un altro array di 20 numeri"<<"\n";
+							cin.get();
+					cout<<"i tuoi numeri :"<<"\n";
+								srand((unsigned)time(0)); 
+	int numbers2[N];
+	generaVettore(numbers2);
+	
+					cout<<"\n"<<"premi invio per avviare il bubble sort";
+							cin.get();
+	
+	bubbleSort(numbers2);
+	
+			cout<<"\n"<<"\n"<<"premi invio per avviare il merge sort fra i 2 array"<<"\n";
+				cin.get();
+					system("CLS");
+				cin.get();
+		
+	int n = sizeof(numbers) / sizeof(numbers2[0]); 
+    int m = sizeof(numbers2) / sizeof(numbers2[0]); 
+	int res[n + m]; 
+	sortedMerge(numbers, numbers2, res, n, m);
+	
+	    cout << "Il tuoi 2 array uniti con il merg sort: ";  
+    			for (int i = 0; i < n + m; i++)  
+        				cout << " " << res[i];  
+    									cout << "\n";  
+    
+    
+    
+    
+	return 0;
+}
